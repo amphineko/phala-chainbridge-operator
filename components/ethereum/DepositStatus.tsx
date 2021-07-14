@@ -56,7 +56,7 @@ export const DepositStatus = ({ hash }: { hash?: string }): JSX.Element => {
             return <>loading</>
         }
 
-        if (voteOption.isEmpty) {
+        if (voteOption.isEmpty || voteOption.isNone) {
             return <>pending for proposal</>
         }
 
@@ -68,7 +68,7 @@ export const DepositStatus = ({ hash }: { hash?: string }): JSX.Element => {
                 {threshold && <>, {threshold} required</>})
             </>
         )
-    }, [])
+    }, [isVoteLoading, threshold, voteOption])
 
     return (
         <Block>
